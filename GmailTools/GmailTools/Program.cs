@@ -21,6 +21,7 @@ namespace GmailTools
             var parser = new MimeParser(stream, MimeFormat.Mbox);
             MimeMessage message;
             List<MailMessage> data = new List<MailMessage>();
+            int count = 0;
             using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"C:\TMP\Mail\stats.csv"))
             {
@@ -33,15 +34,16 @@ namespace GmailTools
                     msg.From = message.From.ToString();
                     msg.Subject = message.Subject;
                     msg.Date = message.Date;
-                    msg.OriginalTo = message.Headers.Where(x => x.Field == "X-Gm-Original-To").First().Value;
-                    msg.DeliveredTo = message.Headers.Where(x => x.Field == "Delivered-To").First().Value;
-                    msg.GmailLabels = message.Headers.Where(x => x.Field == "X-Gmail-Labels").First().Value;
+                    msg.OriginalTo = message.Headers.Where(x => x.Field == "X-Gm-Original-To")?.FirstOrDefault()?.Value ?? "";
+                    msg.DeliveredTo = message.Headers.Where(x => x.Field == "Delivered-To")?.FirstOrDefault()?.Value ?? "";
+                    msg.GmailLabels = message.Headers.Where(x => x.Field == "X-Gmail-Labels")?.FirstOrDefault()?.Value ?? "";
                     file.WriteLine(msg.ToCsvString());
                     // data.Add(new MailMessage(message.From.ToString(), message.Subject, message.TextBody, message.Date));
-                    if (data.Count % 10000 == 0)
+                    if (count % 10000 == 0)
                     {
-                        Console.WriteLine(data.Count / 1000 + "k complete");
+                        Console.WriteLine(count / 1000 + "k complete");
                     }
+                    count++;
                 }
             }
         }
