@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GmailTools", "GmailTools\GmailTools.csproj", "{D0A02F9E-766E-436F-B9B6-CC2E8F5FBFED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0A02F9E-766E-436F-B9B6-CC2E8F5FBFED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0A02F9E-766E-436F-B9B6-CC2E8F5FBFED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0A02F9E-766E-436F-B9B6-CC2E8F5FBFED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0A02F9E-766E-436F-B9B6-CC2E8F5FBFED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8D07352-9136-47A7-8AA7-DF6B0239E133}
+	EndGlobalSection
+EndGlobal
