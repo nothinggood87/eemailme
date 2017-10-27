@@ -14,7 +14,7 @@ namespace GmailTools
             // Convert headers to csv
             foreach (string h in headers)
             {
-                Header += ",\"{h}\"";
+                Header += $",\"{h}\"";
             }
             Header = Header.Substring(1);
             // Convert data to csv
@@ -23,13 +23,13 @@ namespace GmailTools
                 var csvRow = "";
                 foreach (string col in row)
                 {
-                    csvRow += ",\"{col}\"";
+                    csvRow += $",\"{col}\"";
                 }
                 Data.Add(csvRow.Substring(1));
             }
         }
         public string Header { get; set; }
-        public List<string> Data { get; set; }
+        public List<string> Data { get; set; } = new List<string>();
         public List<string> GetCsvText()
         {
             var text = new List<string>

@@ -14,10 +14,11 @@ namespace GmailTools
     /// </summary>
     abstract class Report
     {
-        public void Process(string sourceDataPath, string destinationCsvPath)
+        internal string _sourceDataPath, _destinationCsvPath;
+        public void Process()
         {
             var data = new List<List<string>>();
-            using (var fs = new FileStream(sourceDataPath, FileMode.Open, FileAccess.Read))
+            using (var fs = new FileStream(_sourceDataPath, FileMode.Open, FileAccess.Read))
             {
                 var parser = new MimeParser(fs, MimeFormat.Mbox);
                 int count = 0;
@@ -33,10 +34,10 @@ namespace GmailTools
                     count++;
                 }
             }
-            var csvReport = new CsvReport(Headers, data);
-            File.WriteAllLines(destinationCsvPath, csvReport.GetCsvText());
+            var csvReport = new CsvReport(GetHeaders(), data);
+            File.WriteAllLines(_destinationCsvPath, csvReport.GetCsvText());
         }
-        public abstract List<string> ProcessMessage(MimeMessage message);
-        public List<string> Headers { get; set; }
+        internal abstract List<string> ProcessMessage(MimeMessage message);
+        internal abstract List<string> GetHeaders();
     }
 }
