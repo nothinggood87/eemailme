@@ -33,10 +33,10 @@ namespace GmailTools.Reports
             public List<StatItem> Items { get; set; } = new List<StatItem>();
             public void Add(StatItem item)
             {
+                item.Date = item.Date.ToOffset(new TimeSpan(-6, 0, 0));
                 item.Date = item.Date.AddMinutes(item.Date.Minute * -1);
                 item.Date = item.Date.AddSeconds(item.Date.Second * -1);
                 item.Date = item.Date.AddMilliseconds(item.Date.Millisecond * -1);
-                
                 Items.Add(item);
             }
         }

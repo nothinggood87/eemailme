@@ -14,7 +14,7 @@ namespace GmailTools
     {
         static void Main(string[] args)
         {
-            string date = "2017-10-12";
+            string date = "2017-10-21";
             string data = $"{Config.DataPath}\\{date}";
             string report = Config.ReportsPath;
             var reports = new List<IReport>
