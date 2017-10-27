@@ -87,17 +87,19 @@ namespace GmailTools.Reports
                 _headers.AddRange(uniqueLabels);
                 for (var date = startDate; date <= endDate; date = date.AddHours(1))
                 {
-                    Console.WriteLine(date);
-                    int[] labelCounts = new int[uniqueLabels.Count];
-                    foreach(string l in uniqueLabels)
+                    statsDict.Add(date, new int[uniqueLabels.Count].ToList());
+                }
+                for(int i = 0; i < stats.Items.Count; i++)
+                {
+                    statsDict[stats.Items[i].Date][uniqueLabels.IndexOf(stats.Items[i].Label)]++;
+                }
+                for (var date = startDate; date <= endDate; date = date.AddHours(1))
+                {
+                    var row = new List<string>
                     {
-                        labelCounts[uniqueLabels.IndexOf(l)] =
-                            stats.Items.Count(x => x.Date == date && x.Label == l);
-                    }
-                    statsDict.Add(date, labelCounts.ToList());
-                    var row = new List<string>();
-                    row.Add(date.ToString());
-                    foreach(var c in labelCounts)
+                        date.ToString()
+                    };
+                    foreach (var c in statsDict[date])
                     {
                         row.Add(c.ToString());
                     }
