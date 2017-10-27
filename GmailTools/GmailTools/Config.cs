@@ -11,5 +11,21 @@ namespace GmailTools
         public static string ProjectPath => "C:\\Dropbox\\Projects\\eemailme";
         public static string ReportsPath => $"{ProjectPath}\\Reports\\Jacob";
         public static string DataPath => $"{ProjectPath}\\Data";
+        public static List<string> GmailSystemLabels => new List<string>
+        {
+            "INBOX",
+            "SPAM",
+            "TRASH",
+            "UNREAD",
+            "STARRED",
+            "IMPORTANT",
+            "SENT",
+            "DRAFT",
+            "CATEGORY_PERSONAL",
+            "CATEGORY_SOCIAL",
+            "CATEGORY_PROMOTIONS",
+            "CATEGORY_UPDATES",
+            "CATEGORY_FORUMS"
+        };
     }
 }

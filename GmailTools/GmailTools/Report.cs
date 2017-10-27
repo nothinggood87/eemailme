@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 
 namespace GmailTools
 {
+    interface IReport
+    {
+        void Process();
+    }
     /// <summary>
     /// Intended to automate as much of report processing as possible.
     /// Report data will all be kept in-memory until complete.
     /// </summary>
-    abstract class Report
+    abstract class Report : IReport
     {
         internal string _sourceDataPath, _destinationCsvPath;
         public void Process()
@@ -26,7 +30,6 @@ namespace GmailTools
                 {
                     MimeMessage message = parser.ParseMessage();
                     data.Add(ProcessMessage(message));
-                    // data.Add(new MailMessage(message.From.ToString(), message.Subject, message.TextBody, message.Date));
                     if (count % 10000 == 0)
                     {
                         Console.WriteLine(count / 1000 + "k complete");
