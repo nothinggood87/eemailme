@@ -8,6 +8,8 @@ namespace GmailTools
 {
     class Config
     {
-        public static string Path => "C:\\Dropbox\\Projects\\eemailme";
+        public static string ProjectPath => "C:\\Dropbox\\Projects\\eemailme";
+        public static string ReportsPath => $"{ProjectPath}\\Reports\\Jacob";
+        public static string DataPath => $"{ProjectPath}\\Data";
     }
 }
