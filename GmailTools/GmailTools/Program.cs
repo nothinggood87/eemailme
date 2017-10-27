@@ -29,14 +29,16 @@ namespace GmailTools
                 while (!parser.IsEndOfStream)
                 {
                     message = parser.ParseMessage();
-                    var msg = new MailMessage();
-                    msg.To = message.To.ToString();
-                    msg.From = message.From.ToString();
-                    msg.Subject = message.Subject;
-                    msg.Date = message.Date;
-                    msg.OriginalTo = message.Headers.Where(x => x.Field == "X-Gm-Original-To")?.FirstOrDefault()?.Value ?? "";
-                    msg.DeliveredTo = message.Headers.Where(x => x.Field == "Delivered-To")?.FirstOrDefault()?.Value ?? "";
-                    msg.GmailLabels = message.Headers.Where(x => x.Field == "X-Gmail-Labels")?.FirstOrDefault()?.Value ?? "";
+                    var msg = new MailMessage
+                    {
+                        To = message.To.ToString(),
+                        From = message.From.ToString(),
+                        Subject = message.Subject,
+                        Date = message.Date,
+                        OriginalTo = message.Headers.Where(x => x.Field == "X-Gm-Original-To").FirstOrDefault()?.Value ?? "",
+                        DeliveredTo = message.Headers.Where(x => x.Field == "Delivered-To").FirstOrDefault()?.Value ?? "",
+                        GmailLabels = message.Headers.Where(x => x.Field == "X-Gmail-Labels").FirstOrDefault()?.Value ?? ""
+                    };
                     file.WriteLine(msg.ToCsvString());
                     // data.Add(new MailMessage(message.From.ToString(), message.Subject, message.TextBody, message.Date));
                     if (count % 10000 == 0)
