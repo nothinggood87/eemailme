@@ -14,7 +14,7 @@ namespace GmailTools
     {
         static void Main(string[] args)
         {
-            string date = "2017-10-21";
+            string date = "2017-10-12";
             string data = $"{Config.DataPath}\\{date}";
             string report = Config.ReportsPath;
             var reports = new List<IReport>
@@ -23,7 +23,10 @@ namespace GmailTools
                     $"{report}\\{nameof(BasicToFromSubjectEtc)}.csv"),
 
                 new MailVolumeByLabel($"{data}\\jacob.mbox",
-                    $"{report}\\{nameof(MailVolumeByLabel)}.csv")
+                    $"{report}\\{nameof(MailVolumeByLabel)}.csv"),
+
+                new GithubUserVolumeByDate($"{data}\\jacob.mbox",
+                    $"{report}\\{nameof(GithubUserVolumeByDate)}.csv")
             };
             Console.WriteLine("Choose report to run");
             for(int i = 0; i < reports.Count; i++)

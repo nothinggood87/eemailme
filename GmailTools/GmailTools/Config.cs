@@ -11,7 +11,7 @@ namespace GmailTools
         private static List<string> andrewPCs = new List<string>
         {
             "ANDREW-LAPTOP",
-            "ANDREW-DESKTOP"
+            "ANDREWDESKTOP"
         };
         private static List<string> jacobPCs = new List<string>
         {
@@ -41,7 +41,7 @@ namespace GmailTools
                     case "DT10": return "V:\\Dropbox\\Projects\\eemailme";
                     // Andrew
                     case "ANDREW-LAPTOP": return "C:\\Users\\andre\\Dropbox\\eemailme";
-                    case "ANDREW-DESKTOP": return "C:\\Users\\andre\\Dropbox\\eemailme";
+                    case "ANDREWDESKTOP": return "C:\\Users\\Boys64Bit\\Dropbox\\eemailme";
                 }
                 throw new Exception("Your computer name is not supported!");
             }
